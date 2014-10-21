@@ -1,0 +1,4 @@
+require 'csv'
+CSV.foreach(Rails.root.join("db/seeds_data/shirts.csv"), headers: true) do |row|
+  Shirts.find_or_create_by(categories: row[1],brand: row[2],size: row[3],color: row[4], price: row[5] )
+end

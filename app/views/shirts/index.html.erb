@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="row">
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+
+    <li class="name">
+      <h1>
+        <a href="/">
+        MarketPlace
+        </a>
+      </h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li>
+        <div id='container'>
+          <a href='' class='click'><b>Register </b></a> <br/>
+        </div>
+
+      </li>
+      <li>
+        <div id='container'>
+          <a href='' class='click'><b>login </b></a> <br/>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</nav>
+</div>
+<div class='popup'>
+  <div class='content'>
+    <img src='http://www.developertips.net/demos/popup-dialog/img/x.png' alt='quit' class='x' id='x' />
+    <p>
+      
+      <br/>
+      <br/>
+      <a href='' class='close'>Close</a>
+    </p>
+  </div>
+</div>
+<div id='container'>
+  <a href='' class='click'><h2><b>Click Here to See Popup! </b></h2></a> <br/>
+</div>
+
+<%if notice.present? || alert.present? %>
+    <div class="row">
+      <%is_alert = alert.present? ? "alert" : ""%>
+      <div data-alert class="alert-box <%=is_alert%>">
+        <%=notice || alert%>
+        <a href="#" class="close">&times;</a>
+      </div>
+    </div>
+<%end%>
+
+
+    <ul class="left">
+
+      <li class="has-dropdown">
+        <a class="active" href="#">Categories</a>
+        <ul class="dropdown">
+          <li><a href="#">T-Shirts</a></li>
+          <li><a href="#">Tank Tops</a></li>
+          <li><a href="#">Polos</a></li>
+          <li><a href="#">Henley</a></li>
+          <li><a href="#">Casual</a></li>
+
+          <li><a href="#">See all →</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has-dropdown">
+        <a class="active" href="#">Brand</a>
+        <ul class="dropdown">
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+
+          <li><a href="#">See all →</a></li>
+        </ul>
+      </li>
+
+
+
+      <li class="has-dropdown">
+        <a class="active" href="#">Size</a>
+        <ul class="dropdown">
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+
+          <li><a href="#">See all →</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has-dropdown">
+        <a class="active" href="#">Color</a>
+        <ul class="dropdown">
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+
+          <li><a href="#">See all →</a></li>
+        </ul>
+      </li>
+
+
+      <li class="has-dropdown">
+        <a class="active" href="#">Price</a>
+        <ul class="dropdown">
+          <li><a href="#">Dropdown Option</a></li>
+          <li><a href="#">Dropdown Option</a></li>
+
+          <li><a href="#">See all →</a></li>
+        </ul>
+      </li>
+
+    </ul>
+
+<div class="row">
+
+    <div class="panel">
+      <h3>Listing shirts</h3>
+      <table>
+        <thead>
+        <tr>
+          <th>Categories</th>
+          <th>Brand</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th>Price</th>
+          <th colspan="3"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @shirts.each do |shirt| %>
+            <tr>
+              <td><%= shirt.categories %></td>
+              <td><%= shirt.brand %></td>
+              <td><%= shirt.size %></td>
+              <td><%= shirt.color %></td>
+              <td><%= shirt.price %></td>
+              <td><%= link_to 'Show', shirt %></td>
+              <td><%= link_to 'Edit', edit_shirt_path(shirt) %></td>
+              <td><%= link_to 'Destroy', shirt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <p>This is a three columns grid panel with an arbitrary height.</p>
+      <%= link_to 'New Shirt', new_shirt_path %>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="row">
+
+  <div class="large-4 columns">
+
+      <p>
+        <img src="http://placehold.it/400x300"/>
+      </p>
+  </div>
+  <div class="large-4 columns">
+
+      <p>
+        <img src="http://placehold.it/400x300"/>
+      </p>
+
+  </div>
+  <div class="large-4 columns">
+
+      <p>
+        <img src="http://placehold.it/400x300"/>
+      </p>
+
+  </div>
+
+</div>
+
+
+
+
+<footer class="row">
+  <div class="large-12 columns">
+    <hr/>
+    <div class="row">
+      <div class="large-6 columns">
+        <p>© Copyright MarketPlace 2014</p>
+      </div>
+      <div class="large-6 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Section 1</a></li>
+          <li><a href="#">Section 2</a></li>
+          <li><a href="#">Section 3</a></li>
+          <li><a href="#">Section 4</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script type='text/javascript'>
+    $(function(){
+        var overlay = $('<div id="overlay"></div>');
+        $('.close').click(function(){
+            $('.popup').hide();
+            overlay.appendTo(document.body).remove();
+            return false;
+        });
+
+        $('.x').click(function(){
+            $('.popup').hide();
+            overlay.appendTo(document.body).remove();
+            return false;
+        });
+
+        $('.click').click(function(){
+            overlay.show();
+            overlay.appendTo(document.body);
+            $('.popup').show();
+            return false;
+        });
+    });
+</script>
+</html>
